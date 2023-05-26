@@ -1,4 +1,4 @@
-package main
+package proxy
 
 import (
 	"bytes"
@@ -123,7 +123,7 @@ func (server *ProxyServer) LoadDoc(link string, isBlockedFn, giveUpFn CheckFnTyp
 		doc, err = goquery.NewDocumentFromResponse(res)
 		if err != nil {
 			if server.Config.Debug {
-				fmt.Print("FAIL", "cannot create doc, [ERR=%s]", err)
+				log.Print("FAIL", "cannot create doc, [ERR=%s]", err)
 			}
 			return nil, nil, err
 		}
